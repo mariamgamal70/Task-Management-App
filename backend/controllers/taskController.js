@@ -3,8 +3,8 @@ const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
 exports.createTask= catchAsync(async (req, res, next) => {
-  const { title, description } = req.body;
-  const task = await Task.create({ title, description, UserId: req.user.id });
+  const { title, description ,status} = req.body;
+  const task = await Task.create({ title, description,status, UserId: req.user.id });
     res.status(201).json({
         status: 'success',
         data: {

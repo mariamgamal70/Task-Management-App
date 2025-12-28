@@ -4,20 +4,28 @@ import { Input } from '@/components/ui/input';
 import { Field, FieldLabel } from '@/components/ui/field';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const TaskForm = ({ onSubmit, onCancel, initialData }) => {
-    const [title, setTitle] = useState(initialData ? initialData.title : '');
-    const [description, setDescription] = useState(initialData ? initialData.description : '');
-    const [status, setStatus] = useState(initialData ? initialData.status : 'pending');
+const TaskForm = ({ onSuccess, onCancel, initialTask }) => {
+    const [title, setTitle] = useState(initialTask ? initialTask.title : '');
+    const [description, setDescription] = useState(initialTask ? initialTask.description : '');
+    const [status, setStatus] = useState(initialTask ? initialTask.status : 'pending');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ title, description, status });
+        if (typeof onSuccess === 'function') {
+            // Preserve id when editing so update calls have the task identifier
+            onSuccess({
+                ...(initialTask ? { id: initialTask.id } : {}),
+                title,
+                description,
+                status,
+            });
+        }
     };
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle>{initialData ? 'Edit Task' : 'Create New Task'}</CardTitle>
+                <CardTitle>{initialTask ? 'Edit Task' : 'Create New Task'}</CardTitle>
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -67,7 +75,7 @@ const TaskForm = ({ onSubmit, onCancel, initialData }) => {
                             Cancel
                         </Button>
                         <Button type="submit">
-                            {initialData ? 'Update Task' : 'Create Task'}
+                            {initialTask ? 'Update Task' : 'Create Task'}
                         </Button>
                     </div>
                 </form>

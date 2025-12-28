@@ -5,7 +5,7 @@ import { Trash2, Edit } from 'lucide-react';
 // Destructure the props here: { task, onEdit, onDelete }
 const TaskCard = ({ task, onEdit, onDelete }) => {
     return (
-        <Card className="hover:shadow-md transition-shadow">
+        <Card className="hover:shadow-md transition-shadow w-full">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-lg font-bold">{task.title}</CardTitle>
                 <div className="flex gap-2">

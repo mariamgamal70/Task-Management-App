@@ -12,7 +12,7 @@ export const getTask = async (taskId) => {
     return response.data;
 }
 export const updateTask = async (taskId, taskData) => {
-    const response = await api.put(`/tasks/${taskId}`, taskData, { withAuth: true });
+    const response = await api.patch(`/tasks/${taskId}`, taskData, { withAuth: true });
     return response.data;
 }
 export const deleteTask = async (taskId) => {

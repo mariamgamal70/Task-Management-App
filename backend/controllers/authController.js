@@ -106,7 +106,6 @@ exports.register = catchAsync(async (req, res, next) => {
 });
 
 exports.getCurrentUser = catchAsync(async (req, res, next) => {
-    console.log('Getting current user:', req.user);
   res.status(200).json({
     status: 'success',  
     data: {

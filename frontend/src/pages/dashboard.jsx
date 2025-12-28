@@ -36,17 +36,17 @@ export function Dashboard() {
             navigate('/login');
         }
     };
-    // const fetchTask = async (id) => {
-    //     try {
-    //         setLoading(true);
-    //         const response = await getTask(id);
-    //         return response.data.data.task;
-    //     } catch (error) {
-    //         console.error('Error fetching task:', error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+    const fetchTask = async (id) => {
+        try {
+            setLoading(true);
+            const response = await getTask(id);
+            return response.data.data.task;
+        } catch (error) {
+            console.error('Error fetching task:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const fetchTasks = async () => {
         try {
@@ -73,20 +73,20 @@ export function Dashboard() {
         }
     };
 
-    // const handleUpdateTask = async (updatedTask) => {
-    //     try {
-    //         setLoading(true);
-    //         const response = await updateTask(updatedTask.id, updatedTask);
-    //         setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
-    //         setEditingTask(null);
-    //         setShowForm(false);
-    //     } catch (error) {
-    //         console.error('Error updating task:', error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
+    const handleUpdateTask = async (updatedTask) => {
+        try {
+            setLoading(true);
+            const response = await updateTask(updatedTask.id, updatedTask);
+            setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
+            setEditingTask(null);
+            setShowForm(false);
+        } catch (error) {
+            console.error('Error updating task:', error);
+        } finally {
+            setLoading(false);
+        }
         
-    // };
+    };
 
     const handleDeleteTask = async (taskId) => {
         // Standard 2025 UX: Ask before deleting
@@ -176,7 +176,7 @@ export function Dashboard() {
                         </CardContent>
                     </Card>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="">
                         {tasks.map(task => (
                             <TaskCard
                                 key={task.id}
