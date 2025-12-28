@@ -1,9 +1,10 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
-const sequelize = require('./server.js'); 
-const User = require('./database/user.db.js');
-const Task = require('./database/task.db.js');
+const cookieParser = require('cookie-parser');
+const sequelize = require('./config/database'); 
+const User = require('./database/user.db');
+const Task = require('./database/task.db');
 dotenv.config();
 
 const app = express();
@@ -14,14 +15,14 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'  ]
 }));
 app.use(express.json());
+app.use(cookieParser());
 
 
-    // const authRoutes = require('./src/Modules/auth/auth.routes.js');
-    // const taskRoutes = require('./src/Modules/tasks/task.routes.js');
+const authRoutes = require('./routes/auth.routes.js');
+const taskRoutes = require('./routes/task.routes.js');
 
-    // app.use('/auth', authRoutes);
-    // app.use('/tasks', taskRoutes);
-
+app.use('/auth', authRoutes);
+app.use('/tasks', taskRoutes);
 
 (async () => {
     try {

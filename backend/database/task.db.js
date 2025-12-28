@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./../server.js');
-const User = require('./user.db.js');
+const sequelize = require('./../config/database');
+const User = require('./user.db');
 
 const Task = sequelize.define('Task', {
   title: {
@@ -17,8 +17,6 @@ const Task = sequelize.define('Task', {
   },
 });
 
-// Associations
-Task.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' }); //each task belongs to a user 1 to 1 relation
-User.hasMany(Task, { foreignKey: 'userId' });//one to many relation (user can have many tasks)
+
 
 module.exports = Task;

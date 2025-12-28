@@ -9,6 +9,7 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    logging: false,
     pool: {
       max: 15,           // Increase for high-traffic apps
       min: 0,
