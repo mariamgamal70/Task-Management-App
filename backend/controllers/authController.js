@@ -18,14 +18,7 @@ const signToken = (id) => {
 const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user.id);
 
-  res.cookie('jwt', token, {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
-  });
-    // Remove password from output
+  // Remove password from output
   user.password = undefined;
 
   res.status(statusCode).json({
@@ -110,4 +103,14 @@ exports.register = catchAsync(async (req, res, next) => {
   });
 
   createSendToken(newUser, 201, req, res);
+});
+
+exports.getCurrentUser = catchAsync(async (req, res, next) => {
+    console.log('Getting current user:', req.user);
+  res.status(200).json({
+    status: 'success',  
+    data: {
+      user: req.user
+    }
+  });
 });
