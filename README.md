@@ -8,7 +8,7 @@ A modern, full-stack application built with **Node.js**, **Express**, **MySQL (S
 - **npm** (comes with Node.js)
 
 ---
-## project structure
+## Project Structure
 ```
 
 ├── backend/
@@ -56,17 +56,17 @@ https://orange-escape-472520.postman.co/workspace/My-Workspace~1c21cbf3-066a-4f0
 3.Run the Frontend:
 ```npm run dev```
 The app includes
-login:
+## Login:
 <img width="1920" height="1080" alt="Screenshot 2025-12-28 231316" src="https://github.com/user-attachments/assets/be2bb004-c651-4c58-bb58-405df7ffddd4" />
-registration:
+## Registration:
 <img width="1920" height="1080" alt="Screenshot 2025-12-28 231340" src="https://github.com/user-attachments/assets/1fa25af9-70d5-4257-b14c-3f56898039f3" />
-viewing tasks
+## Viewing Tasks
 <img width="1920" height="1080" alt="Screenshot 2025-12-28 231603" src="https://github.com/user-attachments/assets/a2f4b572-2f3d-44d0-a352-bdec9ff3078e" />
-adding tasks
+## Adding Tasks
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c63d946b-a329-42c6-9e44-2078e387a161" />
-editing tasks:
+## Editing Tasks:
 <img width="1920" height="1080" alt="Screenshot 2025-12-28 231636" src="https://github.com/user-attachments/assets/24ad92b6-a8ad-49a2-8439-57f036e669e1" />
-delete task:
+## Delete Task:
 <img width="1920" height="1080" alt="Screenshot 2025-12-28 231613" src="https://github.com/user-attachments/assets/3225748e-8a0d-4189-a465-0c32e4590aeb" />
 
 
