@@ -15,6 +15,8 @@ const Task = sequelize.define('Task', {
     type: DataTypes.ENUM('pending', 'in-progress', 'done'),
     defaultValue: 'pending'
   },
+}, {
+  underscored: true // Use snake_case for database columns
 });
 
 

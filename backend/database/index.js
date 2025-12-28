@@ -6,8 +6,8 @@ const User = require('./user.db');
 const Task = require('./task.db');
 
 // Define Relationships (Associations)
-Task.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' }); //each task belongs to a user 1 to 1 relation
-User.hasMany(Task, { foreignKey: 'userId' });//one to many relation (user can have many tasks)
+Task.belongsTo(User, { foreignKey: 'UserId', onDelete: 'CASCADE' });
+User.hasMany(Task, { foreignKey: 'UserId' });
 
 // Collect all models into one object
 const models = {

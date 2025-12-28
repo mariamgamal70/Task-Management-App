@@ -2,9 +2,8 @@ const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const sequelize = require('./config/database'); 
-const User = require('./database/user.db');
-const Task = require('./database/task.db');
+const sequelize = require('./config/database');
+require('./database/index'); // Load models and associations
 dotenv.config();
 
 const app = express();

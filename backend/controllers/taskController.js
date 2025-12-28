@@ -4,7 +4,7 @@ const AppError = require('./../utils/appError');
 
 exports.createTask= catchAsync(async (req, res, next) => {
   const { title, description } = req.body;
-  const task = await Task.create({ title, description, userId: req.user.id });
+  const task = await Task.create({ title, description, UserId: req.user.id });
     res.status(201).json({
         status: 'success',
         data: {
@@ -14,7 +14,7 @@ exports.createTask= catchAsync(async (req, res, next) => {
 });
 
 exports.getTask = catchAsync(async (req, res, next) => {
-  const task = await Task.findOne({ where: { id: req.params.id, userId: req.user.id } });
+  const task = await Task.findOne({ where: { id: req.params.id, UserId: req.user.id } });
     if (!task) {
         return next(new AppError('No task found with that ID', 404));
     }
@@ -27,7 +27,7 @@ exports.getTask = catchAsync(async (req, res, next) => {
 });
 
 exports.getTasks = catchAsync(async (req, res, next) => {
-  const tasks = await Task.findAll({ where: { userId: req.user.id } });
+  const tasks = await Task.findAll({ where: { UserId: req.user.id } });
     res.status(200).json({
         status: 'success',
         results: tasks.length,
@@ -37,7 +37,7 @@ exports.getTasks = catchAsync(async (req, res, next) => {
     });
 });     
 exports.updateTask = catchAsync(async (req, res, next) => {
-  const task = await Task.findOne({ where: { id: req.params.id, userId: req.user.id } });   
+  const task = await Task.findOne({ where: { id: req.params.id, UserId: req.user.id } });   
     if (!task) {
         return next(new AppError('No task found with that ID', 404));
     }
@@ -52,7 +52,7 @@ exports.updateTask = catchAsync(async (req, res, next) => {
 }
 );
 exports.deleteTask = catchAsync(async (req, res, next) => {
-  const task = await Task.findOne({ where: { id: req.params.id, userId: req.user.id } });
+  const task = await Task.findOne({ where: { id: req.params.id, UserId: req.user.id } });
     if (!task) {
         return next(new AppError('No task found with that ID', 404));
     }   
