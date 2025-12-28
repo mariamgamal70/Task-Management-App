@@ -1,16 +1,19 @@
-    const dotenv = require('dotenv');
-    const express = require('express');
-    const cors = require('cors');
-    const sequelize = require('./server.js'); 
+const dotenv = require('dotenv');
+const express = require('express');
+const cors = require('cors');
+const sequelize = require('./server.js'); 
 const User = require('./database/user.db.js');
 const Task = require('./database/task.db.js');
-    app.use(cors({
+dotenv.config();
+
+const app = express();
+app.use(cors({
     origin: ['http://localhost:5173/', 'http://localhost:3000/'], 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'  ]
-    }));
-    app.use(express.json());
+}));
+app.use(express.json());
 
 
     // const authRoutes = require('./src/Modules/auth/auth.routes.js');
@@ -20,7 +23,7 @@ const Task = require('./database/task.db.js');
     // app.use('/tasks', taskRoutes);
 
 
-    (async () => {
+(async () => {
     try {
         await sequelize.authenticate();
         console.log('Database connected.');
@@ -32,4 +35,4 @@ const Task = require('./database/task.db.js');
     } catch (err) {
         console.error('Startup Error:', err);
     }
-    })();
+})();
