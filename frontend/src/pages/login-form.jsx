@@ -33,10 +33,7 @@ export function LoginForm() {
       const data = await login(email, password);
 
       if (data.status === 'success' && data.token) {
-        // 1. Commit the cookie first with a global path
         Cookies.set('jwt', data.token);
-
-        // 2. Navigate immediately in the same block
         // replace: true prevents the back-button loop
         navigate('/dashboard', { replace: true });
       }
@@ -48,7 +45,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6")}>
+    <div className="flex flex-col gap-6">
       <Card className="w-full max-w-md mx-auto bg-white shadow-md">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
